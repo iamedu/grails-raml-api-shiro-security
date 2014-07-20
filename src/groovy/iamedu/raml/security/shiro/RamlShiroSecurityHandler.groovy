@@ -16,28 +16,13 @@ class RamlShiroSecurityHandler implements SecurityHandler {
     
   @Override
   boolean userAuthenticated(Map request) {
-    if(!isPublicUrl(request)) {
-      SecurityUtils.subject.isAuthenticated()
-    } else {
-      true
-    }
+    SecurityUtils.subject.isAuthenticated()
   }
 
   @Override
   boolean authorizedExecution(Map request) {
     String permission = "${request.serviceName}:${request.method.toLowerCase()}".toString()
-    if(!isPublicUrl(request)) {
-      SecurityUtils.subject.isPermitted(permission)
-    } else {
-      true
-    }
-  }
-
-  private def isPublicUrl(Map request) {
-    def matcher = new AntPathMatcher()
-    def publicUrl = config.iamedu.raml.security.publicUrls.any {
-      matcher.match(it, request.requestUrl)
-    }
+    SecurityUtils.subject.isPermitted(permission)
   }
 
 }
