@@ -19,13 +19,18 @@ class ShiroDefaultRealm extends AuthorizingRealm {
   AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
 
     String className = config.iamedu.raml.security.shiro.userClass
-    String usernameField = config.iamedu.raml.security.shiro.usernameField
-    String passwordField = config.iamedu.raml.security.shiro.passwordField
-    if(!usernameField) {
+    String usernameField
+    String passwordField
+
+    if(config.iamedu.raml.security.shiro.usernameField instanceof String) {
+      usernameField = config.iamedu.raml.security.shiro.usernameField
+    } else {
       usernameField = "username"
     }
 
-    if(!passwordField) {
+    if(config.iamedu.raml.security.shiro.passwordField instanceof String) {
+      passwordField = config.iamedu.raml.security.shiro.passwordField
+    } else {
       passwordField = "password"
     }
 
@@ -45,30 +50,40 @@ class ShiroDefaultRealm extends AuthorizingRealm {
     def info = new org.apache.shiro.authz.SimpleAuthorizationInfo()
 
     String className = config.iamedu.raml.security.shiro.userClass
-    String usernameField = config.iamedu.raml.security.shiro.usernameField
-    String passwordField = config.iamedu.raml.security.shiro.passwordField
-    String permissionsField = config.iamedu.raml.security.shiro.permissionsField
-    String rolesField = config.iamedu.raml.security.shiro.rolesField
+    String usernameField
+    String passwordField
+    String permissionsField
+    String rolesField
 
-    if(!usernameField) {
+    if(config.iamedu.raml.security.shiro.usernameField instanceof String) {
+      usernameField = config.iamedu.raml.security.shiro.usernameField
+    } else {
       usernameField = "username"
     }
 
-    if(!passwordField) {
+    if(config.iamedu.raml.security.shiro.passwordField instanceof String) {
+      passwordField = config.iamedu.raml.security.shiro.passwordField
+    } else {
       passwordField = "password"
     }
 
-    if(!permissionsField) {
+    if(config.iamedu.raml.security.shiro.permissionsField instanceof String) {
+      permissionsField = config.iamedu.raml.security.shiro.permissionsField
+    } else {
       permissionsField = "permissions"
     }
 
-    if(!rolesField) {
+    if(config.iamedu.raml.security.shiro.rolesField instanceof String) {
+      rolesField = config.iamedu.raml.security.shiro.rolesField
+    } else {
       rolesField = "roles"
     }
 
-    String rolePermissionField = config.iamedu.raml.security.shiro.rolePermissionField
+    String rolePermissionField
 
-    if(!rolePermissionField) {
+    if(config.iamedu.raml.security.shiro.rolePermissionField instanceof String) {
+      rolePermissionField = config.iamedu.raml.security.shiro.rolePermissionField
+    } else {
       rolePermissionField = "permissions"
     }
 
