@@ -135,11 +135,10 @@ Brief summary/description of the plugin.
           proxyTargetClass = true
         }
 
+        passwordService(org.apache.shiro.authc.credential.DefaultPasswordService)
+
         // The default credential matcher.
-        credentialMatcher(HashedCredentialsMatcher) { bean ->
-            hashAlgorithmName = 'SHA-256'
-            storedCredentialsHexEncoded = true
-        }
+        credentialsMatcher(org.apache.shiro.authc.credential.PasswordMatcher)
 
         // Default permission resolver: WildcardPermissionResolver.
         // This converts permission strings into WildcardPermission
@@ -178,7 +177,10 @@ Brief summary/description of the plugin.
             securityManager = ref("shiroSecurityManager")
         }
 
-        defaultShiroRealm(ShiroDefaultRealm)
+        defaultShiroRealm(ShiroDefaultRealm) {
+            grailsApplication = ref("grailsApplication")
+            credentialsMatcher = ref("credentialsMatcher")
+        }
     }
 
     def doWithDynamicMethods = { ctx ->
