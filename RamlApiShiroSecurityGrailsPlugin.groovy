@@ -21,7 +21,7 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 
 class RamlApiShiroSecurityGrailsPlugin {
     // the plugin version
-    def version = "0.1.0"
+    def version = "0.1.1"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.4 > *"
     // resources that are excluded from plugin packaging
@@ -29,7 +29,7 @@ class RamlApiShiroSecurityGrailsPlugin {
         "grails-app/views/error.gsp"
     ]
 
-    def dependsOn = ["raml-api":"0.1.0-SNAPSHOT"]
+    def dependsOn = ["raml-api":"0.1.1"]
 
     // TODO Fill in these fields
     def title = "Raml Api Shiro Security Plugin" // Headline display name of the plugin
